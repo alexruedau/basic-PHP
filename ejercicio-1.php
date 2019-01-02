@@ -1,4 +1,6 @@
 <?php
+/*Recorrer un arreglo de forma ascendente como descendente sin
+sin importar el tipo de las llaves*/
 echo "<h2>Ejercicio 1</h2>";
 $arreglo = [
   'keyStr1' => 'lado',
@@ -17,7 +19,8 @@ foreach ($arreglo as $elementoDESC) {
     echo $elementoDESC . ', ';
 }
 echo "<br> ¡Qué trabajo me ha costado! <br>";
-
+/////////////////////////////////////////////////////////////////////
+/*Recorrer arreglos que contienen a su vez arreglos*/
 echo "<br><h2>Ejercicio 2</h2>";
 
 $paises = [
@@ -34,6 +37,9 @@ foreach ($paises as $pais=>$ciudades) {
   echo "<br>";
 }
 
+/////////////////////////////////////////////////////////////////////
+/*Encontrando los 3 valores más altos y los 3 valores más bajos
+dentro de un arreglo*/
 echo "<br><h2>Ejercicio 3</h2>";
 $valores = [23, 54, 32, 67, 34, 78, 98, 56, 21, 34, 57, 92, 12, 5, 61];
 
