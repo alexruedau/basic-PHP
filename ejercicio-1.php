@@ -33,4 +33,19 @@ foreach ($paises as $pais=>$ciudades) {
   }
   echo "<br>";
 }
+
+echo "<br><h2>Ejercicio 3</h2>";
+$valores = [23, 54, 32, 67, 34, 78, 98, 56, 21, 34, 57, 92, 12, 5, 61];
+
+sort($valores);
+
+for ($i = 0; $i < 3; $i++) {
+    echo $valores[$i] . ', ';
+}
+
+rsort($valores);
+echo "<br>";
+for ($i = 0; $i < 3; $i++) {
+    echo $valores[$i] . ', ';
+}
 ?>
