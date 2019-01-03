@@ -6,7 +6,7 @@ class Job {
   public $visible;
   public $months;
 
-  public function setTitle($t){
+  public function setTitle($title){
     $this->title = $title;
   }
 
