@@ -1,7 +1,7 @@
 <?php
 $lastName = 'Rueda U.';
 $name = 'Alex ' . $lastName;
-$limitMonths = 12;
+$limitMonths = 1000;
 /*$name = "Alex $lastName";
 var_dump($name);*/
 /*$jobs = [
@@ -16,36 +16,57 @@ $jobs = [
     'title' => 'PHP Developer',
     'description' => 'Éste es un gran trabajo!',
     'visible' => true,
-    'months' => 5
+    'months' => 12
   ],
   [
     'title' => 'Python Dev',
     'visible' => true,
-    'months' => 4
+    'months' => 40
   ],
   [
     'title' => 'DevOps',
     'visible' => true,
-    'months' => 8
+    'months' => 80
   ],
   [
     'title' => 'Node Dev',
     'visible' => true,
-    'months' => 2
+    'months' => 20
   ],
   [
     'title' => 'Frontend Dev',
     'visible' => true,
-    'months' => 7
+    'months' => 70
   ]
 ];
+function getDuration($months){
+  $years = floor($months/12);
+  $extraMonths = $months % 12;
+    if ($years == 0){
+      return "$extraMonths months";
+    } elseif ($extraMonths == 0) {
+      return "$years years";
+    } else
+    return "$years years $extraMonths months";
+}
 
-/*$var1 = 1;
-if ($var1 > 2){
-  echo "Es mayor que 2";
-} else {
-  echo "No es mayor que 2";
-}*/
+function printJob($job){
+  if ($job['visible'] == false){
+    return;
+  }
+
+  echo '<li class="work-position">';
+    echo '<h5>' . $job['title'] . '</h5>';
+    echo '<p>' . $job['description'] . '</p>';
+    echo '<p>' . getDuration($job['months']) . '</p>';
+    echo '<strong>Achievements:</strong>';
+    echo '<ul>';
+      echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+      echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+      echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+    echo '</ul>';
+  echo '</li>';
+}
 
 ?>
 
@@ -78,7 +99,7 @@ if ($var1 > 2){
           <li>Mail: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="18707d7b6c776a5875797174367b7775">[email&#160;protected]</a></li>
           <li>Phone: 1234567890</li>
           <li>LinkedIn: https://linkedin.com</li>
-          <li>Twitter: @hectorbenitez</li>
+          <li>Twitter: @alexruedau</li>
         </ul>
       </div>
     </div>
@@ -108,20 +129,7 @@ if ($var1 > 2){
                   break;
                 }
 
-                if ($jobs[$idx]['visible'] == false){
-                  continue;
-                }
-                echo '<li class="work-position">';
-                  echo '<h5>' . $jobs[$idx]['title'] . '</h5>';
-                  echo '<p>' . $jobs[$idx]['description'] . '</p>';
-                  echo '<p>' . $totalMonths . '</p>';
-                  echo '<strong>Achievements:</strong>';
-                  echo '<ul>';
-                    echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-                    echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-                    echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-                  echo '</ul>';
-                echo '</li>';
+                printJob($jobs[$idx]);
               }
             ?>
 
