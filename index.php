@@ -71,7 +71,7 @@ var_dump($name);*/
                 //$totalMonths = $totalMonths + $jobs[$idx]['months'];
                 /*La expresión de abajo cumple la misma función de arriba
                 Se recomienda usarla ya que es más corta*/
-                $totalMonths += $jobs[$idx]['months'];
+                $totalMonths += $jobs[$idx]->months;
 
                 if($totalMonths > $limitMonths){
                   break;
