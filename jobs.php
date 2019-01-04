@@ -3,6 +3,10 @@
 require 'app/Models/Job.php';
 require 'app/Models/Project.php';
 require_once 'app/Models/Printable.php';
+require 'lib1/Project.php';
+
+use App\Models\{Job, Project};
+
 
 $job1 = new Job('PHP Developer', 'Éste es un gran trabajo!');
 $job1->months = 6;
@@ -14,6 +18,8 @@ $job3 = new Job('Devops', 'Éste es un gran trabajo!');
 $job3->months = 18;
 
 $project1 = new Project('Project 1', 'Description');
+
+$projectLib = new Lib1\Project();
 
 // Arreglos dentro de arreglos
 $jobs = [
