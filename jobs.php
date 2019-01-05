@@ -1,42 +1,22 @@
 <?php
 
-require_once 'vendor/autoload.php';
+use App\Models\{Job, Project};
 
-use App\Models\{Job, Project, Printable};
+$jobs = Job::all();
 
-
-$job1 = new Job('PHP Developer', 'Éste es un gran trabajo!');
-$job1->months = 6;
-
-$job2 = new Job('Python Developer', 'Éste es un gran trabajo!');
-$job2->months = 12;
-
-$job3 = new Job('Devops', 'Éste es un gran trabajo!');
-$job3->months = 18;
-
-$project1 = new Project('Project 1', 'Description');
-
-
-
-// Arreglos dentro de arreglos
-$jobs = [
-  $job1,
-  $job2,
-  $job3
-];
-
+$project1 = new Project('Project 1', 'Description #1');
 $projects = [
   $project1
 ];
 
-function printElement(Printable $job){
-  if ($job->visible == false){
+function printElement($job){
+  /*if ($job->visible == false){
     return;
-  }
+  }*/
 
   echo '<li class="work-position">';
-    echo '<h5>' . $job->getTitle() . '</h5>';
-    echo '<p>' . $job->getDescription() . '</p>';
+    echo '<h5>' . $job->title . '</h5>';
+    echo '<p>' . $job->description . '</p>';
     echo '<p>' . $job->getDurationAsString() . '</p>';
     echo '<strong>Achievements:</strong>';
     echo '<ul>';
