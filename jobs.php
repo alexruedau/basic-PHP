@@ -1,11 +1,8 @@
 <?php
 
-require 'app/Models/Job.php';
-require 'app/Models/Project.php';
-require_once 'app/Models/Printable.php';
-require 'lib1/Project.php';
+require_once 'vendor/autoload.php';
 
-use App\Models\{Job, Project};
+use App\Models\{Job, Project, Printable};
 
 
 $job1 = new Job('PHP Developer', 'Éste es un gran trabajo!');
@@ -19,7 +16,7 @@ $job3->months = 18;
 
 $project1 = new Project('Project 1', 'Description');
 
-$projectLib = new Lib1\Project();
+
 
 // Arreglos dentro de arreglos
 $jobs = [
