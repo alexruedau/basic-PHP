@@ -41,7 +41,11 @@ $map->get('index', '/curso-PHP/', [
   'controller' =>'App\Controllers\IndexController',
   'action' => 'indexAction'
 ]);
-$map->get('addJobs', '/curso-PHP/addJobs', [
+$map->get('addJobs', '/curso-PHP/jobs/add', [
+  'controller' =>'App\Controllers\JobsController',
+  'action' => 'getAddJobAction'
+]);
+$map->post('saveJobs', '/curso-PHP/jobs/add', [
   'controller' =>'App\Controllers\JobsController',
   'action' => 'getAddJobAction'
 ]);
@@ -76,5 +80,5 @@ if(!$route){
   $actionName = $handlerData['action'];
 
   $controller = new $controllerName;
-  $controller->$actionName();
+  $controller->$actionName($request);
 }
