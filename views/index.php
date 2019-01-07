@@ -1,25 +1,3 @@
-<?php
-
-use App\Models\{Job, Project};
-
-require_once('jobs.php'); //se puede hacer solo un llamado
-//require('jobs.php');//se pueden hacer los llamados que sean necesarios
-//require_once('jobs.php');//solo un llamado
-$lastName = 'Rueda U.';
-$name = 'Alex ' . $lastName;
-$limitMonths = 1000;
-/*$name = "Alex $lastName";
-var_dump($name);*/
-/*$jobs = [
-  0 => 'PHP Developer',
-  1 => 'Python Dev',
-  2 => 'DevOps'
-];*/
-
-
-
-?>
-
 <!doctype html>
 <html lang="en">
 
