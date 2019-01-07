@@ -37,7 +37,10 @@ $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
 
 $routerContainer = new RouterContainer();
 $map = $routerContainer->getMap();
-$map->get('index', '/curso-PHP/', '../index.php');
+$map->get('index', '/curso-PHP/', [
+  'controller' =>'App\Controllers\IndexController',
+  'action' => 'indexAction'
+]);
 $map->get('addJobs', '/curso-PHP/addJobs', '../addJob.php');
 $map->get('addProjects', '/curso-PHP/addProjects', '../addProject.php');
 
@@ -46,5 +49,10 @@ $route = $matcher->match($request);
 if(!$route){
   echo 'No route';
 } else {
-  require $route->handler;
+  $handlerData = $route->handler;
+  $controllerName = $handlerData['controller'];
+  $actionName = $handlerData['action'];
+
+  $controller = new $controllerName;
+  $controller->$actionName();
 }
