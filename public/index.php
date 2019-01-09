@@ -6,6 +6,8 @@ error_reporting(E_ALL);
 
 require_once '../vendor/autoload.php';
 
+session_start();
+
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Aura\Router\RouterContainer;
 
@@ -64,9 +66,18 @@ $map->get('loginForm', '/curso-PHP/login', [
   'controller' =>'App\Controllers\AuthController',
   'action' => 'getLogin'
 ]);
+$map->get('logout', '/curso-PHP/logout', [
+  'controller' =>'App\Controllers\AuthController',
+  'action' => 'getLogout'
+]);
 $map->post('auth', '/curso-PHP/auth', [
   'controller' =>'App\Controllers\AuthController',
   'action' => 'postLogin'
+]);
+$map->get('admin', '/curso-PHP/admin', [
+  'controller' =>'App\Controllers\AdminController',
+  'action' => 'getIndex',
+  'auth' => true
 ]);
 
 $matcher = $routerContainer->getMatcher();
@@ -96,6 +107,13 @@ if(!$route){
   $handlerData = $route->handler;
   $controllerName = $handlerData['controller'];
   $actionName = $handlerData['action'];
+  $needsAuth = $handlerData['auth'] ?? false; // ?? false significa si no está definido
+
+  $sessionUserId = $_SESSION['userId'] ?? null;
+  if ($needsAuth && !$sessionUserId){
+    echo 'Protected route';
+    die; //Es mejor utilizar die solo para pruebas
+  }
 
   $controller = new $controllerName;
   $response = $controller->$actionName($request);
