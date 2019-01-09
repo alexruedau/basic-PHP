@@ -49,7 +49,17 @@ $map->post('saveJobs', '/curso-PHP/jobs/add', [
   'controller' =>'App\Controllers\JobsController',
   'action' => 'getAddJobAction'
 ]);
+////////////////////////////////////////////////////////////////////////////////
 $map->get('addProjects', '/curso-PHP/addProjects', '../addProject.php');
+////////////////////////////////////////////////////////////////////////////////
+$map->get('addUsers', '/curso-PHP/users/add', [
+  'controller' =>'App\Controllers\UsersController',
+  'action' => 'getAddUserAction'
+]);
+$map->post('saveUsers', '/curso-PHP/users/add', [
+  'controller' =>'App\Controllers\UsersController',
+  'action' => 'getAddUserAction'
+]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);

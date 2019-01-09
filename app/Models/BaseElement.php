@@ -10,10 +10,16 @@ class BaseElement implements Printable {
   public $description;
   public $visible = true;
   public $months;
+  ////////////////////////
+  protected $user;
+  protected $password;
 
-  public function __construct($title, $description){
+  public function __construct($title, $description, $user, $password){
     $this->setTitle($title);
     $this->description = $description;
+    ///////////////////////////////////
+    $this->setUser($user);
+    $this->password = $password;
   }
 
   public function setTitle($title){
@@ -30,6 +36,22 @@ class BaseElement implements Printable {
 
   public function getDescription(){
     return $this->description;
+  }
+  ////////////////////////////////////////7
+  public function setUser($user){
+    if ($user==''){
+      $this->user = 'N/A';
+    } else {
+      $this->user = $user;
+    }
+  }
+
+  public function getUser(){
+    return $this->user;
+  }
+
+  public function getPassword(){
+    return $this->password;
   }
 
 }
