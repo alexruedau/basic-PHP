@@ -60,6 +60,14 @@ $map->post('saveUsers', '/curso-PHP/users/add', [
   'controller' =>'App\Controllers\UsersController',
   'action' => 'getAddUserAction'
 ]);
+$map->get('loginForm', '/curso-PHP/login', [
+  'controller' =>'App\Controllers\AuthController',
+  'action' => 'getLogin'
+]);
+$map->post('auth', '/curso-PHP/auth', [
+  'controller' =>'App\Controllers\AuthController',
+  'action' => 'postLogin'
+]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
@@ -94,3 +102,5 @@ if(!$route){
 
   echo $response->getBody();
 }
+
+?>
