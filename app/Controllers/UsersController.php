@@ -17,6 +17,11 @@ class UsersController extends BaseController {
         $userValidator->assert($postData);
         $postData = $request->getParsedBody();
 
+        $user = new User();
+        $user->email = $postData['email'];
+        $user->password = password_hash($postData['password'], PASSWORD_DEFAULT);
+        $user->save();
+
         $responseMessage = 'Saved';
       } catch (\Exception $e){
         $responseMessage = $e->getMessage();
